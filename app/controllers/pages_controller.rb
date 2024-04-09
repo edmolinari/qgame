@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   def deaths_report
     parse = ParseQgame.new
     parse.generate_matches
-    @data = JSON.pretty_generate(JSON.parse(parse.create_matches_json_report))
+    @data = JSON.pretty_generate(JSON.parse(parse.deaths_report))
   end
 
   def raw_file

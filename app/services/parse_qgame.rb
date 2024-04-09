@@ -38,12 +38,19 @@ class ParseQgame
     matches_report.to_json
   end
 
-  # def deaths_report
-  #   deaths_report = {}
-  #   @matches.map do |match|
-    
-  #   end
-  # end
+  def deaths_report
+    deaths_report = {}
+    @matches.map do |match|
+      means_of_death = Hash[match.deaths
+        .group_by { |death| death.cause_of_death.to_sym }
+        .transform_values { |values| values.count }
+        .sort_by{|k,v|  -v}]
+      deaths_report.merge!({
+        match.name => means_of_death
+      })
+    end
+    deaths_report.to_json
+  end
 
   def player_ranking
     ranking_report = {}
