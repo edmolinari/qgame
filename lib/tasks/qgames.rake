@@ -6,6 +6,7 @@ namespace :qgames do
     puts JSON.pretty_generate(JSON.parse(parse.create_matches_json_report))
   end
 
+  desc "generate matches raking report"
   task matches_ranking: :environment do
     desc "generate matches ranking"
     parse = ParseQgame.new
