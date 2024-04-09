@@ -38,6 +38,27 @@ class ParseQgame
     matches_report.to_json
   end
 
+  # def deaths_report
+  #   deaths_report = {}
+  #   @matches.map do |match|
+    
+  #   end
+  # end
+
+  def player_ranking
+    ranking_report = {}
+    @matches.map do |match|
+      ranking_report.merge!({
+        match.name => 
+          match.kills.sort_by{|k,v| -v}
+          .map { |i| i[0] }
+          .flatten
+          .map.with_index { |value, index| "#{index + 1} - #{value}" }
+      })
+    end
+    ranking_report.to_json
+  end
+
   def create_or_find_player(name)
     existing_player = @players.filter { |player| player.name == name }&.first
     if existing_player.nil?

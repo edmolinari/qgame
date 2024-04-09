@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get :matches_report, to: 'pages#matches_report'
   get :raw_file, to: 'pages#raw_file'
   get :deaths_report, to: 'pages#deaths_report'
+  get :ranking_report, to: 'pages#ranking_report'
 
   # Defines the root path route ("/")
   root to: 'pages#home'
